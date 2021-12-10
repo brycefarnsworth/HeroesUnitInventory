@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1 #{title}: #{town.name}
+  p= town.description
+
+  if town_units.length
+
+    p #[strong Delete the following units before attempting to delete this town.]
+
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Units
+
+      ul
+      each unit in town_units
+        li
+          a(href=unit.url) #{unit.name}
+
+  else
+    p Do you really want to delete this Town?
+
+    form(method='POST' action='')
+      div.form-group
+        input#townid.form-control(type='hidden',name='townid', required='true', value=town._id )
+
+      button.btn.btn-primary(type='submit') Delete

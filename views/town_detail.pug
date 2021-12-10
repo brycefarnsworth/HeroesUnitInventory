@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  h1 #{town.name}
+  p #{town.description}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Units
+
+    dl
+      each unit in town_units
+        dt
+          a(href=unit.url) #{unit.name}
+        dd Available: #{unit.available}
+
+      else
+        p This town has no units.
+
+  hr
+  p
+    a(href=town.url+'/delete') Delete town
+  p
+    a(href=town.url+'/update') Update town

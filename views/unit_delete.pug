@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 #{title}: #{unit.name}
+
+  p Do you really want to delete this Unit?
+
+  form(method='POST' action='')
+    div.form-group
+      input#unitid.form-control(type='hidden',name='unitid', required='true', value=unit._id )
+
+    button.btn.btn-primary(type='submit') Delete

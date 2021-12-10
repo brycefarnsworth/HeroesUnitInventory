@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each town in town_list
+      li
+        a(href=town.url) #{town.name} 
+        | - #{town.description}
+
+    else
+      li There are no towns.

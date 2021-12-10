@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 #{unit.name}
+
+  p #[strong Town:] 
+    a(href=unit.town.url) #{unit.town.name}
+  p #[strong Stats:] #{unit.description}
+  p #[strong Cost:] #{unit.price}
+  p #[strong Num. Available:] #{unit.available}
+
+  hr
+  p
+    a(href=unit.url+'/delete') Delete unit
+  p
+    a(href=unit.url+'/update') Update unit

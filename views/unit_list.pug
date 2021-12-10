@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each unit in unit_list
+      li
+        a(href=unit.url) #{unit.name}
+        |  (#{unit.town.name})
+
+    else
+      li There are no units.

@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Unit Name:
+      input#name.form-control(type='text', placeholder='Name of unit' name='name' required='true' value=(undefined===unit ? '' : unit.name) )
+    div.form-group
+      label(for='description') Stats:
+      input#description.form-control(type='text', placeholder='Unit stats' name='description' required='true' value=(undefined===unit ? '' : unit.description) )
+    div.form-group
+      label(for='town') Town:
+      select#town.form-control(type='select', placeholder='Select town' name='town' required='true' )
+        for town in towns
+          if unit
+            option(value=town._id selected=(town._id.toString()===unit.town._id.toString() ? 'selected' : false) ) #{town.name}
+          else
+            option(value=town._id) #{town.name}
+    div.form-group
+      label(for='price') Cost:
+      input#price.form-control(type='number' name='price' required='true' value=(undefined===unit ? '' : unit.price) )
+    div.form-group
+      label(for='available') Number available:
+      input#available.form-control(type='number' name='available' required='true' value=(undefined===unit ? '' : unit.available) )
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #[em Heroes Unit Library], a very basic Express website developed for practice.
+
+  h1 Dynamic content
+
+  if error
+    p Error getting dynamic content.
+  else
+    p The inventory has the following record counts:
+
+    ul
+      li #[strong Towns:] !{data.town_count}
+      li #[strong Units:] !{data.unit_count}
+      li #[strong Total Available Units:] !{units_available}

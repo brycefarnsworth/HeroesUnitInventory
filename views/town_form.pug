@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Town Name:
+      input#name.form-control(type='text', placeholder='Castle, Rampart etc.' name='name' required='true' value=(undefined===town ? '' : town.name))
+    div.form-group
+      label(for='description') Description:
+      input#description.form-control(type='text', placeholder='Heroes and units in this town' name='description' required='true' value=(undefined===town ? '' : town.description))
+    div.form-group
+      label(for='alignment') Alignment:
+      select#alignment.form-control(type='select' placeholder='Select alignment' name='alignment' required='true')
+        for alignment_option in alignment_options
+          if town
+            option(value=alignment_option selected=(town.alignment==alignment_option ? 'selected': false)) #{alignment_option}
+          else
+            option(value=alignment_option) #{alignment_option}
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+   ul
+    for error in errors
+     li!= error.msg
